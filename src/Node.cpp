@@ -34,8 +34,12 @@ namespace rjson
     const_iterator::const_iterator(const const_iterator& src)
     : ::rjson::config::noncopyable()
     , m_ParentNode(src.m_ParentNode)
-    , m_InternalIterator((NULL != src.m_InternalIterator.get()) ? new ObjectValue_const_iterator(*src.m_InternalIterator) : NULL)
+    , m_InternalIterator()
     {
+      if (NULL != src.m_InternalIterator.get())
+      {
+        m_InternalIterator = ::rjson::config::make_shared<ObjectValue_const_iterator>(*src.m_InternalIterator);
+      }
     }
 
     const ::rjson::Node&

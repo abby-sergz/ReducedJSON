@@ -364,7 +364,7 @@ namespace
   ::rjson::detail::TINodeImplPtr
   NodeImpl::clone() const
   {
-    return ::rjson::detail::TINodeImplPtr(new NodeImpl(*this));
+    return ::rjson::config::make_shared<NodeImpl>(*this);
   }
 
   void
@@ -475,12 +475,12 @@ namespace rjson
   {
     TINodeImplPtr createNodeImpl()
     {
-      return TINodeImplPtr(new NodeImpl());
+      return ::rjson::config::make_shared<NodeImpl>();
     }
 
     TINodeImplPtr createNodeImpl(const Node& value)
     {
-      return TINodeImplPtr(new NodeImpl(value));
+      return ::rjson::config::make_shared<NodeImpl>(value);
     }
   }
 }
