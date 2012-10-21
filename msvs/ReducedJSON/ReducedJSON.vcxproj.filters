@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{cf3f352a-6785-4042-9195-77c55e19fb3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{1714eb0d-022e-4bf5-b864-e5bbdd3ebfbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include_private">
+      <UniqueIdentifier>{c2dc5ce4-ca49-4aa3-9b15-cfd7138f65b8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ConvertValue.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Node.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NodeImpl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Reader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Writer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\rjson\base.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rjson\rjson.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include_private\rjson\ConvertValue.hpp">
+      <Filter>include_private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include_private\rjson\NodeImpl.hpp">
+      <Filter>include_private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include_private\rjson\ObjectValue.hpp">
+      <Filter>include_private</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

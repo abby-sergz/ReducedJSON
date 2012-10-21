@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="ReducedJSON_common"
+	InheritedPropertySheets="$(SolutionDir)/vsprops/boost.vsprops;$(SolutionDir)/vsprops/ReducedJSON_include_directories.vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="REDUCED_JSON_USE_BOOST"
+		WarningLevel="4"
+	/>
+</VisualStudioPropertySheet>

@@ -1,0 +1,16 @@
+build
+build_v100
+
+# MSVS stuff
+*.vcxproj.user
+*.vcproj.*.user
+*.suo
+*.sdf
+*.ncb
+ipch
+*.opensdf
+
+# after converting projects
+vsprops/*.tmp
+_UpgradeReport_Files
+UpgradeLog*.XML

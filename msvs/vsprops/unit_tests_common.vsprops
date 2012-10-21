@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="unit_tests_common"
+	InheritedPropertySheets="$(SolutionDir)/vsprops/boost.vsprops;$(SolutionDir)/vsprops/gtest_common.vsprops"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="&quot;$(SolutionDir)/../unit_tests/include&quot;;&quot;$(SolutionDir)/../include&quot;;&quot;$(SolutionDir)/../vendors/usr_include&quot;"
+		PreprocessorDefinitions="REDUCED_JSON_USE_BOOST"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		GenerateDebugInformation="true"
+	/>
+</VisualStudioPropertySheet>
