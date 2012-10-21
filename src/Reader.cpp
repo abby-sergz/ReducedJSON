@@ -53,6 +53,7 @@ namespace
   void
   Parser::parseToImmediatly(::rjson::Node& node)
   {
+    this->EatSpaces();
     if(kNUMBER_MINUS == m_Char || isdigit(m_Char))
     {
       this->ParseNumber(node);
@@ -68,6 +69,7 @@ namespace
       this->ParseObject(node);
       kEND_OF_LINE != m_Char && this->getNextChar(); // try read next after '}'
     }
+    // if there is some simbols they will be ignored
   }
 
   void

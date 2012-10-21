@@ -22,7 +22,7 @@ TEST(BiggerObject, VariousObjects)
   ASSERT_EQ(3u, node.size());
 }
 
-TEST(InteferDouble, VariousObjects)
+TEST(IntegerDouble, VariousObjects)
 {
   {
     std::string str = "123";
@@ -77,7 +77,7 @@ TEST(InteferDouble, VariousObjects)
 
 }
 
-TEST(Construct_Parse_Serialize_Parse_IsEqual_1, VariousObjects)
+TEST(Construct_Serialize_Parse_IsEqual_1, VariousObjects)
 {
   Node name;
   name.setName("name");
@@ -109,7 +109,7 @@ TEST(Construct_Parse_Serialize_Parse_IsEqual_1, VariousObjects)
 }
 
 
-TEST(Construct_Parse_Serialize_Parse_IsEqual_2, VariousObjects)
+TEST(Construct_Serialize_Parse_IsEqual_2, VariousObjects)
 {
   Node name;
   name.setName("name");
@@ -184,6 +184,58 @@ TEST(ValueEscaping, VariousObjects)
   }
 }
 
+TEST(Spaces, VariousObjects)
+{
+  {
+    std::string str = "  \n  23   ignored\n";
+
+    ::rjson::Node node = ::rjson::read(str);
+    EXPECT_EQ(23, node.asInt64());
+  }
+
+  {
+    std::string str = "  \n  23ignored\n";
+
+    ::rjson::Node node = ::rjson::read(str);
+    EXPECT_EQ(23, node.asInt64());
+  }
+
+  {
+    std::string str = "      \"John Doe\"ignored        ";
+
+    ::rjson::Node node = ::rjson::read(str);
+    EXPECT_EQ("John Doe", node.asString());
+  }
+  {
+    std::string str = "      \"John Doe\"      ignored        ";
+
+    ::rjson::Node node = ::rjson::read(str);
+    EXPECT_EQ("John Doe", node.asString());
+  }
+
+  {
+    std::string str =  "    {  item: \"Gadget\"      ,        price      :  499.99      }   ignored   ";
+    ::rjson::Node node = ::rjson::read(str);
+    ASSERT_EQ(2u, node.size());
+    ::rjson::Node::const_iterator ci = node.begin();
+    EXPECT_EQ("item", ci->getName());
+    EXPECT_EQ("Gadget", ci->asString());
+    ++ci;
+    EXPECT_EQ("price", ci->getName());
+    EXPECT_DOUBLE_EQ(499.99, ci->asDouble());
+  }
+  {
+    std::string str =  "    {  item: \"Gadget\"      ,        price      :  499.99      }ignored     ";
+    ::rjson::Node node = ::rjson::read(str);
+    ASSERT_EQ(2u, node.size());
+    ::rjson::Node::const_iterator ci = node.begin();
+    EXPECT_EQ("item", ci->getName());
+    EXPECT_EQ("Gadget", ci->asString());
+    ++ci;
+    EXPECT_EQ("price", ci->getName());
+    EXPECT_DOUBLE_EQ(499.99, ci->asDouble());
+  }
+}
 
 
 
