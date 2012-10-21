@@ -76,6 +76,5 @@
 * Note: Not implemented
 =======================
   - parsing/serialization of `undefined` value
-  - support of object property name surrounded by quotes {"property name" : 10}
   - support of \uXXXX symbols
   - and many many things

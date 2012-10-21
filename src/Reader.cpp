@@ -207,6 +207,11 @@ namespace
     return kCOLON == c || isspace(c);
   }
 
+  bool isQM(char c)
+  {
+    return kQM == c;
+  }
+
   void
   Parser::ParseObject(::rjson::Node& node)
   {
@@ -216,8 +221,17 @@ namespace
       {
         this->EatSpaces();
       }
-      std::string name = this->readTill(&isSpaceOrColon);
-      
+      std::string name;
+      if (kQM == m_Char)
+      {
+        this->getNextChar(); // fetch the next symbol
+        name = this->readTill(&isQM);
+        kEND_OF_LINE != m_Char && this->getNextChar(); // read closing "
+      }
+      else
+      {
+        name = this->readTill(&isSpaceOrColon);
+      }
       std::stringstream ss;
 
       if (kCOLON != m_Char)

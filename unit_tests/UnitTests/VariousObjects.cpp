@@ -237,5 +237,12 @@ TEST(Spaces, VariousObjects)
   }
 }
 
-
+TEST(PropertyNameSurroundedByQuotes, VariousObjects)
+{
+  std::string str =  "{\" i t e:m{}\": \"Gadget\" ,price:499.99}";
+  ::rjson::Node node = ::rjson::read(str);
+  ASSERT_EQ(2u, node.size());
+  ::rjson::Node::const_iterator ci = node.begin();
+  EXPECT_EQ(" i t e:m{}", ci->getName());
+}
 
